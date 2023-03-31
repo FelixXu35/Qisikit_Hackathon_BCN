@@ -6,7 +6,7 @@ The Black-Scholes model is a mathematical model used to calculate the theoretica
 
 The Black-Scholes differential equation is given by:
 
-$$ \frac{∂C}{∂t} + \frac{1}{2} σ^2 S^2 \frac{∂^2C}{∂S^2} + rS \frac{∂C}{∂S} - rC = 0 $$
+$$ \frac{∂C}{∂t} + \frac{1}{2} σ^2 S^2 \frac{∂^2C}{∂S^2} + rS \frac{∂C}{∂S} - rC = 0$$
 
 - $C$ is the price of the call option as a function of the underlying asset price $S$ and time $t$.
 - $σ$ is the volatility of the underlying asset.
@@ -35,6 +35,26 @@ Here are the steps of solving the eigenstates in Qiskit:
 3. Set up the VQE algorithm: You can set up the VQE algorithm using the `VQE` class in Qiskit. You will need to provide the Hamiltonian, the ansatz, and the optimizer to use for minimizing the energy.
 4. Run the VQE algorithm: You can run the VQE algorithm using the `run` method of the `VQE` class. This will minimize the energy of the Hamiltonian with respect to the parameters of the ansatz.
 5. Extract the eigenstate: Once the VQE algorithm has converged, you can extract the eigenstate of the Hamiltonian by measuring the final state of the quantum circuit. You can do this using the `Statevector` class in Qiskit.
+
+## Mathematical Processing
+
+Reform the Black-Scholes differential equation:
+
+$$  - \frac{1}{2} \hbar σ^2 S^2 \frac{∂^2C}{∂S^2} - \hbar rS \frac{∂C}{∂S} + \hbar rC = i\hbar\frac{∂C}{∂(it)} $$
+
+Since
+
+$$ \frac{∂C}{∂S} = \frac{∂C}{∂\ln S}\frac{∂\ln S}{∂S}=\frac1S\frac{∂C}{∂\ln S}$$
+
+We can change the independent variables into $x =\ln S$, $\tau = it$
+
+$$  (- \frac{1}{2} \hbar σ^2 \frac{∂^2}{∂x^2} - \hbar r\frac{∂}{∂x} + \hbar r)C = i\hbar\frac{∂C}{∂\tau} $$
+
+Which is the Schrödinger equation with the Hamiltonian
+
+$$ \hat{H}=- \frac{1}{2} \hbar σ^2 \frac{∂^2}{∂x^2} - \hbar r\frac{∂}{∂x} + \hbar r$$
+
+
 
 ##  Reference 
 
