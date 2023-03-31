@@ -26,7 +26,15 @@ The Black-Scholes model has had a significant impact on the field of finance, an
 
 ## Methodology
 
+To solve the Black-Scholes differential equation, we need to firstly transform the equation into a "Schrödinger equation“, then find the eigenstates corresponding to the Schrödinger Hamiltonian.
 
+Here are the steps of solving the eigenstates in Qiskit:
+
+1. Define your Hamiltonian: You can define your Hamiltonian as a linear combination of Pauli operators using the `WeightedPauliOperator` class in Qiskit.
+2. Choose an ansatz: An ansatz is a quantum circuit that is used to prepare a trial wavefunction. You can choose an ansatz from the pre-defined templates in Qiskit, such as the `TwoLocal` ansatz or the `EfficientSU2` ansatz, or you can define your own custom ansatz.
+3. Set up the VQE algorithm: You can set up the VQE algorithm using the `VQE` class in Qiskit. You will need to provide the Hamiltonian, the ansatz, and the optimizer to use for minimizing the energy.
+4. Run the VQE algorithm: You can run the VQE algorithm using the `run` method of the `VQE` class. This will minimize the energy of the Hamiltonian with respect to the parameters of the ansatz.
+5. Extract the eigenstate: Once the VQE algorithm has converged, you can extract the eigenstate of the Hamiltonian by measuring the final state of the quantum circuit. You can do this using the `Statevector` class in Qiskit.
 
 ##  Reference 
 
