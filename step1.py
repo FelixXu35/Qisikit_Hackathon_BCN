@@ -1,6 +1,10 @@
 import numpy as np
 from scipy.stats import norm 
 from qiskit import QuantumCircuit
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit.circuit.library import RealAmplitudes
+from qiskit.quantum_info import SparsePauliOp
+from qiskit.opflow import PauliSumOp
 
 def black_scholes_european_call_payoff(S0, K, T, r, sigma):
     '''
@@ -62,7 +66,29 @@ def ansatz(params, n_qubits, rep):
             qc.cry(params[n_qubits+(2*n_qubits-1)*i+n], n, n+1)
             qc.ry(params[n_qubits+(2*n_qubits-1)*i+n+n_qubits-1], n)
         qc.ry(params[n_qubits+(2*n_qubits-1)*i+(2*n_qubits-2)], n_qubits-1)
-        
-    qc.measure_all()
     return qc
+
+
+def hamiltonian(qubit_count, delta, r, sigma):
+
+    dim = 2**qubit_count
+
+    b = -1/2 * (1/2-r/sigma**2)**2-r/sigma**2
+    print(delta)
+
+    H = np.zeros((dim, dim))
+
+    H[0][0] = -b*(2*delta**2)
+
+    H[-1][-1] = -b*(2*delta**2)
+
+    for i in range(1, dim-1):
+    
+        H[i][i-1] = 1
+
+        H[i][i] = -2
+
+        H[i][i+1] = 1
+
+    return H*(1/(2*delta**2))
 
