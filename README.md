@@ -48,15 +48,23 @@ $$ \frac{∂C}{∂S} = \frac{∂C}{∂\ln S}\frac{∂\ln S}{∂S}=\frac1S\frac{�
 
 We can change the independent variables into $x =\ln S$, $\tau = it$
 
-$$  (- \frac{1}{2} \hbar σ^2 \frac{∂^2}{∂x^2} - \hbar r\frac{∂}{∂x} + \hbar r)C = i\hbar\frac{∂C}{∂\tau} $$
+$$  (- \frac{1}{2} \hbar \sigma^2 \frac{∂^2}{∂x^2} - \hbar r\frac{∂}{∂x} + \hbar r)C = i\hbar\frac{∂C}{∂\tau} $$
+
+⬆️ wrong
 
 Which is the Schrödinger equation with the Hamiltonian
 
-$$ \hat{H}=- \frac{1}{2} \hbar σ^2 \frac{∂^2}{∂x^2} - \hbar r\frac{∂}{∂x} + \hbar r$$
+$$ \hat{H}=- \frac{\hbar^2}{2m} \frac{∂^2}{∂x^2} +r( \frac\hbar\sigma \frac{∂}{∂x} + \hbar ), \quad m=\frac{\hbar}{\sigma}$$
 
+We assume the risk-free interest rate $r$ is small, then the Hamiltonian can be written as
 
+$$ \hat{H} = \hat{H}_0 + r\hat{H}_1$$
 
-##  Reference 
+where
+
+$$\begin{aligned}\hat{H}_0=&\frac{\hbar^2}{2m} \frac{∂^2}{∂x^2}\\ \hat{H}_1=& \frac\hbar\sigma \frac{∂}{∂x} + \hbar \end{aligned}$$
+
+###  References
 
 [^1]: Hull, J. C. (2018). Options, futures, and other derivatives. Pearson.
 [^2]: Black, F., & Scholes, M. (1973). The pricing of options and corporate liabilities. Journal of Political Economy, 81(3), 637-654.
