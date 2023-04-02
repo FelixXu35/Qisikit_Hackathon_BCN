@@ -74,8 +74,7 @@ def hamiltonian(qubit_count, delta, r, sigma):
     dim = 2**qubit_count
 
     b = -1/2 * (1/2-r/sigma**2)**2-r/sigma**2
-    print(delta)
-
+   
     H = np.zeros((dim, dim))
 
     H[0][0] = -b*(2*delta**2)

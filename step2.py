@@ -48,3 +48,12 @@ def counts_to_distr(counts):
 def get_sorted_amplitudes(probs):
     sorted_amplitudes = {key: np.sqrt(probs[key]) for key in sorted(probs)}
     return sorted_amplitudes
+
+def counts_to_amp(counts):
+    """
+    Convert Qiskit result counts to dict with integers as
+    keys, and pseudo-probabilities as values.
+    """
+    sq_dict = {key: np.sqrt(value) for key, value in counts.items()}
+    n_shots2 = sum(sq_dict.values())
+    return {int(k, 2): np.sqrt(v)/n_shots2 for k, v in counts.items()}
